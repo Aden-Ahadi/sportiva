@@ -43,8 +43,7 @@
                 <nav class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="text-sm font-medium text-green-800 border-b-2 border-green-800">Home</a>
                     <a href="products.html" class="text-sm font-medium text-gray-700 hover:text-green-800">Shop</a>
-                    <a href="#" class="text-sm font-medium text-gray-700 hover:text-green-800">About</a>
-                    <a href="#" class="text-sm font-medium text-gray-700 hover:text-green-800">Contact</a>
+                    
                 </nav>
 
                 <!-- Cart Button -->
@@ -53,7 +52,7 @@
                         <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0h8"></path>
                         </svg>
-                        <span class="absolute -top-1 -right-1 bg-green-800 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-green-800 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
                     </a>
 
                     <!-- Mobile menu button -->
@@ -71,13 +70,12 @@
             <nav class="p-4">
                 <a href="index.html" class="block py-3 text-base font-medium border-b border-gray-200">Home</a>
                 <a href="products.html" class="block py-3 text-base font-medium border-b border-gray-200">Shop</a>
-                <a href="#" class="block py-3 text-base font-medium border-b border-gray-200">About</a>
-                <a href="#" class="block py-3 text-base font-medium border-b border-gray-200">Contact</a>
+                
                 <a href="cart.html" class="flex items-center gap-2 py-3 text-base font-medium border-b border-gray-200">
                     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0h8"></path>
                     </svg>
-                    Cart (3)
+                    Cart (<span id="mobile-cart-count">0</span>)
                 </a>
             </nav>
         </div>
@@ -106,17 +104,20 @@
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold text-center mb-12">Featured Products</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Product 1 -->
-                    <a href="product-detail.html?id=1" class="group">
+                    <!-- Product 1 - Jersey -->
+                    <div class="group">
                         <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform group-hover:scale-105">
                             <div class="aspect-square relative bg-gray-200">
                                 <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=300&h=300&fit=crop" alt="Pro Team Jersey" class="w-full h-full object-cover">
                             </div>
                             <div class="p-4">
-                                <h3 class="font-semibold text-lg mb-1">Jersey</h3>
+                                <h3 class="font-semibold text-lg mb-1">Pro Team Jersey</h3>
+                                <p class="text-gray-600 text-sm mb-2">Premium quality team jersey</p>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-green-800 font-bold">25000/=</span>
-                                    <button class="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-50">
+                                    <span class="text-green-800 font-bold">25,000/= TSh</span>
+                                    <button 
+                                        onclick="addToCart('jersey', 'Pro Team Jersey', 25000, 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=300&h=300&fit=crop')"
+                                        class="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
                                         <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0h8"></path>
                                         </svg>
@@ -125,19 +126,22 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
 
-                    <!-- Product 2 -->
-                    <a href="product-detail.html?id=2" class="group">
+                    <!-- Product 2 - Soccer Boots -->
+                    <div class="group">
                         <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform group-hover:scale-105">
                             <div class="aspect-square relative bg-gray-200">
-                                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=300&fit=crop" alt="Official Match Football" class="w-full h-full object-cover">
+                                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=300&fit=crop" alt="Professional Soccer Boots" class="w-full h-full object-cover">
                             </div>
                             <div class="p-4">
-                                <h3 class="font-semibold text-lg mb-1">Soccer Boots</h3>
+                                <h3 class="font-semibold text-lg mb-1">Professional Soccer Boots</h3>
+                                <p class="text-gray-600 text-sm mb-2">High-performance football boots</p>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-green-800 font-bold">60000/=</span>
-                                    <button class="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-50">
+                                    <span class="text-green-800 font-bold">60,000/= TSh</span>
+                                    <button 
+                                        onclick="addToCart('boots', 'Professional Soccer Boots', 60000, 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=300&fit=crop')"
+                                        class="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
                                         <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0h8"></path>
                                         </svg>
@@ -146,19 +150,22 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
 
-                    <!-- Product 3 -->
-                    <a href="product-detail.html?id=3" class="group">
+                    <!-- Product 3 - Training Cones -->
+                    <div class="group">
                         <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform group-hover:scale-105">
                             <div class="aspect-square relative bg-gray-200">
                                 <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop" alt="Training Cones Set" class="w-full h-full object-cover">
                             </div>
                             <div class="p-4">
                                 <h3 class="font-semibold text-lg mb-1">Training Cones Set</h3>
+                                <p class="text-gray-600 text-sm mb-2">Professional training equipment</p>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-green-800 font-bold">15000/=</span>
-                                    <button class="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-50">
+                                    <span class="text-green-800 font-bold">15,000/= TSh</span>
+                                    <button 
+                                        onclick="addToCart('cones', 'Training Cones Set', 15000, 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop')"
+                                        class="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
                                         <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0h8"></path>
                                         </svg>
@@ -167,19 +174,22 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
 
-                    <!-- Product 4 -->
-                    <a href="product-detail.html?id=4" class="group">
+                    <!-- Product 4 - Goalkeeper Gloves -->
+                    <div class="group">
                         <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform group-hover:scale-105">
                             <div class="aspect-square relative bg-gray-200">
-                                <img src="https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=300&h=300&fit=crop" alt="Performance Cleats" class="w-full h-full object-cover">
+                                <img src="https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=300&h=300&fit=crop" alt="Goalkeeper Gloves" class="w-full h-full object-cover">
                             </div>
                             <div class="p-4">
-                                <h3 class="font-semibold text-lg mb-1">GoalKeeper Gloves</h3>
+                                <h3 class="font-semibold text-lg mb-1">Goalkeeper Gloves</h3>
+                                <p class="text-gray-600 text-sm mb-2">Professional goalkeeper gloves</p>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-green-800 font-bold">10000/=</span>
-                                    <button class="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-50">
+                                    <span class="text-green-800 font-bold">10,000/= TSh</span>
+                                    <button 
+                                        onclick="addToCart('gloves', 'Goalkeeper Gloves', 10000, 'https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=300&h=300&fit=crop')"
+                                        class="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
                                         <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0h8"></path>
                                         </svg>
@@ -188,7 +198,7 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -282,16 +292,52 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Sportiva. All rights reserved.</p>
+                <p>&copy; 2025 Sportiva. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Cart functionality
+        let cart = [];
+
+        function addToCart(productId, productName, price, image) {
+            // Store product data in localStorage for checkout page
+            const productData = {
+                id: productId,
+                name: productName,
+                price: price,
+                image: image,
+                quantity: 1
+            };
+            
+            localStorage.setItem('selectedProduct', JSON.stringify(productData));
+            
+            // Update cart count
+            cart.push(productData);
+            updateCartCount();
+            
+            // Show confirmation and redirect
+            if (confirm(`${productName} added to cart! Go to checkout?`)) {
+                window.location.href = `checkout.html?product=${productId}`;
+            }
+        }
+
+        function updateCartCount() {
+            const cartCount = cart.length;
+            document.getElementById('cart-count').textContent = cartCount;
+            document.getElementById('mobile-cart-count').textContent = cartCount;
+        }
+
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
+
+        // Initialize cart count on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+        });
     </script>
 </body>
 </html>
